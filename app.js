@@ -31,7 +31,8 @@ app.get("/request-image", async (req, res) => {
 
     const logEntry = new Log({ ip, userAgent });
     await logEntry.save();
-    res.send("Image requested successfully");
+    const imgPath = path.join(__dirname, "tracker.png");
+    res.sendFile(imgPath);
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
